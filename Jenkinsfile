@@ -10,7 +10,7 @@ pipeline {
             }
             steps {
                  
-                waitForQualityGate abortPipeline: false, credentialsId: 'Sonarqube'
+                withSonarQubeEnv(credentialsId: 'Sonarqube')
                 sh 'mvn clean package sonar:sonar'
             }
         }
