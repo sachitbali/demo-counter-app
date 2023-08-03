@@ -7,7 +7,7 @@ pipeline{
     stages{
         stage('Fetch Code'){
             steps{
-                git branch: 'main', url: 'mention url'
+                git branch: 'main', url: 'https://github.com/sachitbali/demo-counter-app.git'
             }
         }
     }
