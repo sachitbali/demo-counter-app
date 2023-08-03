@@ -9,8 +9,10 @@ pipeline{
             steps{
                 git branch: 'main', url: 'https://github.com/sachitbali/demo-counter-app.git'
             }
-        }
+        stage('build the code')
+              steps{
+                  sh'mvn install -Dskiptests'}
+              }
     }
 }
-
         
