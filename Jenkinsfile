@@ -25,7 +25,7 @@ pipeline {
                 scannerHome = tool 'Sonar'
             }
             steps {
-                withSonarQubeEnv(installationName:'Sonar',credentialsId: 'Sonarqube') {
+                withSonarQubeEnv(installationName:'Sonar',credentialsId: 'Sonar') {
                     sh 'mvn clean package sonar:sonar'
                 }
             }
