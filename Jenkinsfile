@@ -21,5 +21,14 @@ pipeline {
                 sh 'mvn test'
             }
         }
+    }    stage('sonar wuality test'){
+            enviornment{
+                scannerHome = tool 'Sonar'
+            }
+            steps{
+                withSonarQubeEnv(credentialsId: 'Sonarqube') {
+                    sh 'mvn clean package sonar:sonar'
+                }
+            }
     }
 }
