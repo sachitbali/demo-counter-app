@@ -1,29 +1,41 @@
 pipeline{
     agent any
-    environment {
-        PATH = "$PATH:/usr/share/maven/bin"
+    tools {
+        maven "maven"
+        jdk "OracleJDK11"
     }
     stages{
-       stage('GetCode'){
+        stage('Fetch Code'){
             steps{
-                git 'https://github.com/sachitbali/demo-counter-app.git'
+                git branch: 'main', url: 'mention url'
             }
-         }        
-       stage('Build'){
+        }
+        stage('Build'){
             steps{
-                sh 'mvn clean package'
+                sh 'mvn install -DskipTests'
             }
-         }
-        stage('SonarQube analysis') {
-//    def scannerHome = tool 'SonarScanner 4.0';
-        steps{
-        withSonarQubeEnv(credentialsId: 'sonar') {
-        // If you have configured more than one global server connection, you can specify its name
-//      sh "${scannerHome}/bin/sonar-scanner"
-        sh "mvn sonar:sonar"
-    }
+        }   post{
+                success {
+                    echo 'Archiving artifacts now.'
+                    archiveArtifacts artifacts: '**/*.war'
+                }
         }
+        stage('Unit Test'){
+            steps{
+                sh 'mvn test'
+            }
         }
-       
+        stage('Sonar Analysis'){
+            environment{
+                scannerHome = tool 'sonar'
+            }
+            steps{
+                withSonarQubeEnv('sonar'){
+                    sh '''
+                    
+                    '''
+                }
+            }
+        }
     }
 }
