@@ -39,9 +39,19 @@ pipeline{
                     
                     waitForQualityGate abortPipeline: false, credentialsId: 'sonar-api'
     
-                    }
-                  
                 }
+                  
             }
+        }
+        stage('Build the code'){
+            steps{
+                script{
+                    
+                    sh'mvn clean install'
+    
+                }
+                  
+            }
+        }
     }
 }
