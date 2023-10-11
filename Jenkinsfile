@@ -33,25 +33,14 @@ pipeline{
                 }
             }
         }
-        stage('Quality gate staus check '){
+        stage('build code'){
             steps{
                 script{
-                    
-                    waitForQualityGate abortPipeline: false, credentialsId: 'sonar-api'
-    
-                }
-                  
-            }
-        }
-        stage('Build the code'){
-            steps{
-                script{
-                    
                     sh'mvn clean install'
-    
-                }
                   
+                }
             }
+        
         }
     }
 }
