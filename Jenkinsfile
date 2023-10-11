@@ -59,10 +59,19 @@ pipeline{
                     withCredentials([string(credentialsId: 'Dockerpass', variable: 'Docker_pass')]) {
                           sh'docker login -u sachitbali -p ${Docker_pass}'
                           sh'docker image push sachitbali/$JOB_NAME:v1.$BUILD_ID'
-                          sh'docker image push sachitbali/$JOB_NAME:latest'          
+                          sh'docker image push sachitbali/$JOB_NAME:latest'
+                                    
                     }
                 }
             }
         }
+        stage('Docker image remove from local'){
+            steps{
+                script{
+                    sh'docker image rmi -f .'
+                                    
+                    }
+                }
+            }
     }
 }
