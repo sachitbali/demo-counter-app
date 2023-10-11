@@ -42,5 +42,16 @@ pipeline{
             }
         
         }
+        stage('build docker image'){
+            steps{
+                script{
+                    sh'docker build -t $JOB_NAME:v1.$BUILD_ID .'
+                    sh'docker build -t $JOB_NAME:v1.$BUILD_ID sachitbali/$JOB_NAME:v1.$BUILD_ID'
+                    sh'docker build -t $JOB_NAME:v1.$BUILD_ID sachitbali/JOB_NAME:latest'
+                  
+                }
+            }
+        
+        }
     }
 }
