@@ -1,0 +1,4 @@
+steps:
+  - command: mvn test 
+  - command: mvn verfiy -DskipUnitTests
+  - command : mvn clean install
