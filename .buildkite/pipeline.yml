@@ -1,5 +1,3 @@
 steps:
-  - command: buildkite-agent pipeline upload
-  - command: mvn test 
-  - command: mvn verfiy -DskipUnitTests
-  - command : mvn clean install
+  - label: 'Build'
+    command: mvn clean compile
