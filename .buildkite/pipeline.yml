@@ -1,6 +1,5 @@
 steps:
-  - label: ":pipeline: Pipeline upload"
-    command: buildkite-agent pipeline upload
+  - command: buildkite-agent pipeline upload
   - command: mvn test 
   - command: mvn verfiy -DskipUnitTests
   - command : mvn clean install
