@@ -6,4 +6,4 @@ steps:
   - label: ":docker: Push to Docker Hub"
     commands:
       - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
-      - docker push my_app
+      - docker image push sachitbali/my_app
