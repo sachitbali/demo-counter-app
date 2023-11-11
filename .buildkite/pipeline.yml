@@ -2,9 +2,8 @@ steps:
   - label: ":docker: Build and Test"
     commands:
       - docker build -t my_app .
-      - docker run your-image-name npm test
   - wait
   - label: ":docker: Push to Docker Hub"
     commands:
       - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
-      - docker push your-image-name
+      - docker push my_app
