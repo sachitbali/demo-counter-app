@@ -1,9 +1,5 @@
 steps:
-  - label: ":docker: Build and Test"
+  - label: ":docker: Builds"
     commands:
-      - docker build -t my_app .
-  - wait
-  - label: ":docker: Push to Docker Hub"
-    commands:
-      - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
-      - docker image push sachitbali/my_app
+      - docker build -t my_image .
+      
