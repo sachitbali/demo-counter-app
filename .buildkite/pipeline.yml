@@ -1,5 +1,0 @@
-steps:
-  - label: ":docker: Builds"
-    commands:
-      - docker build -t my_image .
-      
