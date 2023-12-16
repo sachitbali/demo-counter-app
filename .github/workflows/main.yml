@@ -10,3 +10,8 @@ jobs:
         run: mvn test
       - name: Checkstyle
         run: mvn checkstyle:checkstyle 
+      - name: Set up java 11
+        uses: actions/setup-java@v4
+        with:
+         distributors: 'temurin'
+         java-version: '11'
