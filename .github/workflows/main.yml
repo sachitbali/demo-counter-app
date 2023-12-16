@@ -1,4 +1,4 @@
-name: Hprofile Actons
+name: Hprofile Actions
 on: workflow_dispatch
 jobs:
   Testing:
@@ -13,5 +13,5 @@ jobs:
       - name: Set up java 11
         uses: actions/setup-java@v4
         with:
-         distributors: 'temurin'
+         distribution: 'temurin'
          java-version: '11'
